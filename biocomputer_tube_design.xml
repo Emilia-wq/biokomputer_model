@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="biocomputer_tube_design" name="Biocomputer with NUPACK tube_design">
+    <listOfCompartments>
+      <compartment id="c1" size="1e-06" units="litre" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="miR21" compartment="c1" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="miR155" compartment="c1" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="miR34" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Gate21" compartment="c1" initialConcentration="5e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Gate155" compartment="c1" initialConcentration="5e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Gate34" compartment="c1" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Reporter" compartment="c1" initialConcentration="1e-06" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Int21" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Int155" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Output" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Signal" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Reporter_Inhibited" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Crosstalk_21_155" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Crosstalk_21_34" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Crosstalk_155_21" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Crosstalk_155_34" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Crosstalk_34_21" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="Crosstalk_34_155" compartment="c1" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="k_on_bind21" value="168134.820096646" constant="false"/>
+      <parameter id="k_off_bind21" value="3.56735384537889e-14" constant="false"/>
+      <parameter id="k_on_bind155" value="1000000" constant="false"/>
+      <parameter id="k_off_bind155" value="3.39264696977207e-20" constant="false"/>
+      <parameter id="k_and" value="100000" constant="false"/>
+      <parameter id="k_cat_report" value="0.1" constant="false"/>
+      <parameter id="k_inhibit" value="1000000" constant="false"/>
+      <parameter id="k_uninhibit" value="0.001" constant="false"/>
+      <parameter id="k_leak_gate21" value="1e-05" constant="false"/>
+      <parameter id="k_cross_21_155" value="168134.820096646" constant="false"/>
+      <parameter id="k_uncross_21_155" value="0.108468616640471" constant="false"/>
+      <parameter id="k_cross_21_34" value="168134.820096646" constant="false"/>
+      <parameter id="k_uncross_21_34" value="345.305285724578" constant="false"/>
+      <parameter id="k_cross_155_21" value="1000000" constant="false"/>
+      <parameter id="k_uncross_155_21" value="1.7222820265431" constant="false"/>
+      <parameter id="k_cross_155_34" value="1000000" constant="false"/>
+      <parameter id="k_uncross_155_34" value="712.0873884495" constant="false"/>
+      <parameter id="k_cross_34_21" value="956.413263265593" constant="false"/>
+      <parameter id="k_uncross_34_21" value="95.2396383060095" constant="false"/>
+      <parameter id="k_cross_34_155" value="956.413263265593" constant="false"/>
+      <parameter id="k_uncross_34_155" value="0.729300010410416" constant="false"/>
+      <parameter id="k_deg_Int21" value="0.001" constant="false"/>
+      <parameter id="k_deg_Int155" value="0.001" constant="false"/>
+      <parameter id="k_deg_Output" value="0.001" constant="false"/>
+      <parameter id="k_deg_Signal" value="0.001" constant="false"/>
+      <parameter id="k_deg_miR21" value="0.001" constant="false"/>
+      <parameter id="k_deg_miR155" value="0.001" constant="false"/>
+      <parameter id="k_deg_miR34" value="0.001" constant="false"/>
+      <parameter id="k_deg_Reporter" value="0.001" constant="false"/>
+      <parameter id="k_deg_Reporter_Inhibited" value="0.001" constant="false"/>
+      <parameter id="k_deg_Gate21" value="0.001" constant="false"/>
+      <parameter id="k_deg_Gate155" value="0.001" constant="false"/>
+      <parameter id="k_deg_Gate34" value="0.001" constant="false"/>
+      <parameter id="k_on_bind34" value="956.413263265593" constant="false"/>
+      <parameter id="k_off_bind34" value="1.97535788282497e-11" constant="false"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="bind21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Int21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_on_bind21 </ci>
+              <ci> Gate21 </ci>
+              <ci> miR21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="unbind21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Int21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_off_bind21 </ci>
+              <ci> Int21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="bind155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Int155" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_on_bind155 </ci>
+              <ci> Gate155 </ci>
+              <ci> miR155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="unbind155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Int155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_off_bind155 </ci>
+              <ci> Int155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_bind_Crosstalk_21_155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Crosstalk_21_155" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cross_21_155 </ci>
+              <ci> miR21 </ci>
+              <ci> Gate155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_unbind_Crosstalk_21_155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_21_155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uncross_21_155 </ci>
+              <ci> Crosstalk_21_155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_bind_Crosstalk_21_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Crosstalk_21_34" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cross_21_34 </ci>
+              <ci> miR21 </ci>
+              <ci> Gate34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_unbind_Crosstalk_21_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_21_34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate34" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uncross_21_34 </ci>
+              <ci> Crosstalk_21_34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_bind_Crosstalk_155_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Crosstalk_155_21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cross_155_21 </ci>
+              <ci> miR155 </ci>
+              <ci> Gate21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_unbind_Crosstalk_155_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_155_21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uncross_155_21 </ci>
+              <ci> Crosstalk_155_21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_bind_Crosstalk_155_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Crosstalk_155_34" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cross_155_34 </ci>
+              <ci> miR155 </ci>
+              <ci> Gate34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_unbind_Crosstalk_155_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_155_34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate34" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uncross_155_34 </ci>
+              <ci> Crosstalk_155_34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_bind_Crosstalk_34_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Crosstalk_34_21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cross_34_21 </ci>
+              <ci> miR34 </ci>
+              <ci> Gate21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_unbind_Crosstalk_34_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_34_21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uncross_34_21 </ci>
+              <ci> Crosstalk_34_21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_bind_Crosstalk_34_155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Crosstalk_34_155" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cross_34_155 </ci>
+              <ci> miR34 </ci>
+              <ci> Gate155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="cross_unbind_Crosstalk_34_155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_34_155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uncross_34_155 </ci>
+              <ci> Crosstalk_34_155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="and_generate_output" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Int21" stoichiometry="1" constant="true"/>
+          <speciesReference species="Int155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Output" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_and </ci>
+              <ci> Int21 </ci>
+              <ci> Int155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="reporter_activate" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Output" stoichiometry="1" constant="true"/>
+          <speciesReference species="Reporter" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Signal" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_cat_report </ci>
+              <ci> Output </ci>
+              <ci> Reporter </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="inhibit_reporter" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+          <speciesReference species="Reporter" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Reporter_Inhibited" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_inhibit </ci>
+              <ci> miR34 </ci>
+              <ci> Reporter </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="uninhibit_reporter" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Reporter_Inhibited" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+          <speciesReference species="Reporter" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_uninhibit </ci>
+              <ci> Reporter_Inhibited </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="leak_gate21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Output" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_leak_gate21 </ci>
+              <ci> Gate21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Int21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Int21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Int21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Int155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Int155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int155 </ci>
+              <ci> Int155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Output" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Output" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Output </ci>
+              <ci> Output </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Signal" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Signal" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Signal </ci>
+              <ci> Signal </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_miR21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_miR21 </ci>
+              <ci> miR21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_miR155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_miR155 </ci>
+              <ci> miR155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_miR34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="miR34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_miR34 </ci>
+              <ci> miR34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Reporter" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Reporter" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Reporter </ci>
+              <ci> Reporter </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Reporter_Inhibited" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Reporter_Inhibited" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Reporter_Inhibited </ci>
+              <ci> Reporter_Inhibited </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Gate21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Gate21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Gate21 </ci>
+              <ci> Gate21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Gate155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Gate155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Gate155 </ci>
+              <ci> Gate155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Gate34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Gate34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Gate34 </ci>
+              <ci> Gate34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Crosstalk_21_155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_21_155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Crosstalk_21_155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Crosstalk_21_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_21_34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Crosstalk_21_34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Crosstalk_155_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_155_21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Crosstalk_155_21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Crosstalk_155_34" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_155_34" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Crosstalk_155_34 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Crosstalk_34_21" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_34_21" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Crosstalk_34_21 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_Crosstalk_34_155" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="Crosstalk_34_155" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k_deg_Int21 </ci>
+              <ci> Crosstalk_34_155 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
